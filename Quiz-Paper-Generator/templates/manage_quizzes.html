@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Take Quiz: {{ quiz['title'] }}</h2>
+    <form action="{{ url_for('take_quiz', quiz_id=quiz['id']) }}" method="POST">
+        {% for question in questions %}
+            <p>{{ loop.index }}. {{ question['question'] }}</p>
+            <input type="text" name="answers[{{ question['id'] }}]" required><br>
+        {% endfor %}
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+    <a href="{{ url_for('profile') }}">Back to Profile</a>
+</body>
+</html>

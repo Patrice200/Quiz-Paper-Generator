@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Quiz Results</h2>
+    <p>Welcome, {{ user['username'] }}!</p>
+    <p>University: {{ user['university'] }}</p>
+
+    <h3>Your Quiz Results</h3>
+    <ul>
+        {% for result in results %}
+            <li>
+                Quiz Title: {{ result['title'] }}, Score: {{ result['score'] }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

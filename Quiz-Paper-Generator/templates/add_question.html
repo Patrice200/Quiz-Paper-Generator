@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Add Question</h2>
+    <form method="POST">
+        <div>
+            <label for="question_text">Question Text:</label>
+            <input type="text" id="question_text" name="question_text" required>
+        </div>
+        <div>
+            <label for="correct_answer">Correct Answer:</label>
+            <input type="text" id="correct_answer" name="correct_answer" required>
+        </div>
+        <button type="submit">Add Question</button>
+    </form>
+</body>
+</html>

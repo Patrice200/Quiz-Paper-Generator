@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Edit Quiz</h2>
+    <form action="{{ url_for('edit_quiz', quiz_id=quiz['id']) }}" method="POST">
+        <label for="title">Quiz Title</label>
+        <input type="text" id="title" name="title" value="{{ quiz['title'] }}" required><br>
+
+        <label for="difficulty">Difficulty Level</label>
+        <select id="difficulty" name="difficulty">
+            <option value="easy" {% if quiz['difficulty'] == 'easy' %} selected {% endif %}>Easy</option>
+            <option value="medium" {% if quiz['difficulty'] == 'medium' %} selected {% endif %}>Medium</option>
+            <option value="hard" {% if quiz['difficulty'] == 'hard' %} selected {% endif %}>Hard</option>
+        </select><br>
+
+        <button type="submit">Update Quiz</button>
+    </form>
+
+    <a href="{{ url_for('educator_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

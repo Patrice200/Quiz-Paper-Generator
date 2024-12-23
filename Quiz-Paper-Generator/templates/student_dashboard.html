@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Student Dashboard</h2>
+    <p>Welcome, {{ user['username'] }}!</p>
+    <p>University: {{ user['university'] }}</p>
+
+    <h3>Available Quizzes</h3>
+    <ul>
+        {% for quiz in quizzes %}
+            <li>
+                {{ quiz['title'] }} (Difficulty: {{ quiz['difficulty'] }})
+                <a href="{{ url_for('take_quiz', quiz_id=quiz['id']) }}">Take Quiz</a>
+                {% if quiz['id'] in quiz_scores %}
+                    - Score: {{ quiz_scores[quiz['id']] }} / {{ quiz_questions[quiz['id']] }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('quiz_results') }}">See Your Results</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
